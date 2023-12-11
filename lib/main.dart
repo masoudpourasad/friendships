@@ -81,7 +81,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 const Text(
-                  "Welcome to Friendships ",
+                  "Welcome To Friendships ",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,
