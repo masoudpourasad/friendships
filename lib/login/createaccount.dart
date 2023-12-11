@@ -16,6 +16,9 @@ class _CreateaccountState extends State<Createaccount>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: true,
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[

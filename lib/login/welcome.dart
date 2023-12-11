@@ -1,6 +1,6 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:friendships/login/categorypage.dart';
 import 'package:flutter/material.dart';
+import 'package:friendships/main.dart';
 
 class Welcome extends StatefulWidget {
   const Welcome({super.key});
@@ -13,6 +13,9 @@ class _WelcomeState extends State<Welcome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: true,
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
@@ -211,14 +214,8 @@ class _WelcomeState extends State<Welcome> {
         tag: tag,
         child: GestureDetector(
           onTap: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => Categorypage(
-                          image: image,
-                          title: title,
-                          tag: tag,
-                        )));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const HomePage()));
           },
           child: Material(
             child: Container(
