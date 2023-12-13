@@ -1,281 +1,312 @@
+import 'dart:ui';
 import 'package:animate_do/animate_do.dart';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:friendships/main.dart';
+import 'package:friendships/components/my_button.dart';
+import 'package:friendships/components/my_textfield.dart';
+import 'package:friendships/components/square_tile.dart';
+import 'package:friendships/login/createaccount.dart';
+import 'package:friendships/login/logopage.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
 
-class Welcome extends StatefulWidget {
-  const Welcome({super.key});
+@override
+class WelcomePage extends StatelessWidget {
+  WelcomePage({super.key});
 
-  @override
-  State<Welcome> createState() => _WelcomeState();
-}
+  final usernameController = TextEditingController();
+  final passwordController = TextEditingController();
 
-class _WelcomeState extends State<Welcome> {
+  final double _sigmaX = 5;
+  final double _sigmaY = 5;
+  final double _opacity = 0.2;
+  final double _width = 350;
+  final double _height = 300;
+  final _formKey = GlobalKey<FormState>();
+
+  void signUserIn() {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: true,
-      ),
+      backgroundColor: Colors.grey[800],
       body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            FadeInUp(
-                duration: const Duration(milliseconds: 1000),
-                child: Container(
-                  height: 500,
-                  decoration: const BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage('assets/images/background.jpg'),
-                          fit: BoxFit.cover)),
-                  child: Container(
-                    decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            begin: Alignment.bottomRight,
-                            colors: [
-                          Colors.black.withOpacity(.8),
-                          Colors.black.withOpacity(.2),
-                        ])),
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 50.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: <Widget>[
-                              FadeInUp(
-                                  duration: const Duration(milliseconds: 1200),
-                                  child: IconButton(
-                                    icon: const Icon(
-                                      Icons.favorite,
-                                      color: Colors.white,
-                                    ),
-                                    onPressed: () {},
-                                  )),
-                              FadeInUp(
-                                  duration: const Duration(milliseconds: 1300),
-                                  child: IconButton(
-                                    icon: const Icon(
-                                      Icons.shopping_cart,
-                                      color: Colors.white,
-                                    ),
-                                    onPressed: () {},
-                                  )),
-                            ],
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height,
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              Image.asset(
+                'assets/images/women1.jpg',
+                height: MediaQuery.of(context).size.height,
+                fit: BoxFit.cover,
+              ),
+              SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+                    IconButton(
+                      icon: const Icon(Icons.arrow_back_ios),
+                      color: Colors.white,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            type: PageTransitionType.fade,
+                            child: const HomePage(),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(20.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                FadeInUp(
-                                    duration:
-                                        const Duration(milliseconds: 1500),
-                                    child: const Text(
-                                      "Our New Products",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 30,
-                                          fontWeight: FontWeight.bold),
-                                    )),
-                                const SizedBox(
-                                  height: 15,
+                        );
+                      },
+                    ),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.18),
+                    Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            FadeIn(
+                              duration: const Duration(milliseconds: 3000),
+                              child: Text(
+                                "Let's Start",
+                                style: GoogleFonts.dancingScript(
+                                  color: Colors.grey.shade400,
+                                  fontSize: 32,
                                 ),
-                                FadeInUp(
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            FadeIn(
+                              duration: const Duration(milliseconds: 3000),
+                              child: Text(
+                                "The Minimalist",
+                                style: GoogleFonts.dancingScript(
+                                  color: Colors.grey.shade400,
+                                  fontSize: 32,
+                                ),
+                              ),
+                            ),
+                          ],
+                        )),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                    ClipRect(
+                      child: BackdropFilter(
+                        filter:
+                            ImageFilter.blur(sigmaX: _sigmaX, sigmaY: _sigmaY),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 15),
+                          decoration: BoxDecoration(
+                              color: const Color.fromARGB(255, 46, 55, 76)
+                                  .withOpacity(_opacity),
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(30))),
+                          width: MediaQuery.of(context).size.width * 0.9,
+                          height: MediaQuery.of(context).size.height * 0.50,
+                          child: Form(
+                            key: _formKey,
+                            child: Center(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  FadeIn(
                                     duration:
-                                        const Duration(milliseconds: 1700),
-                                    child: const Row(
-                                      children: <Widget>[
-                                        Text(
-                                          "VIEW MORE",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w600),
+                                        const Duration(milliseconds: 5000),
+                                    child: MyTextField(
+                                      controller: usernameController,
+                                      hintText: 'Email',
+                                      obscureText: false,
+                                    ),
+                                  ),
+
+                                  const SizedBox(height: 10),
+
+                                  // sign in button
+                                  FadeIn(
+                                    duration:
+                                        const Duration(milliseconds: 5000),
+                                    child: MyButton(
+                                      onTap: (() {
+                                        if (_formKey.currentState!.validate()) {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const Createaccount()),
+                                          );
+                                        } else {
+                                          if (kDebugMode) {
+                                            print('not valid');
+                                          }
+                                        }
+                                      }),
+                                    ),
+                                  ),
+
+                                  const SizedBox(height: 10),
+
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Divider(
+                                          indent: 30,
+                                          thickness: 0.5,
+                                          color: Colors.grey.shade400,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 10.0),
+                                        child: Text(
+                                          'Or',
+                                          style: GoogleFonts.dancingScript(
+                                              color: Colors.grey.shade100,
+                                              fontSize: 22),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Divider(
+                                          endIndent: 30,
+                                          thickness: 0.5,
+                                          color: Colors.grey.shade400,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+
+                                  const SizedBox(height: 20),
+
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        FadeInLeft(
+                                          duration: const Duration(
+                                              milliseconds: 2500),
+                                          child: const SquareTile(
+                                            imagePath:
+                                                'assets/images/google.png',
+                                            title: "Continue with Google",
+                                          ),
+                                        ),
+                                        Row(
+                                          children: [
+                                            Expanded(
+                                              child: Divider(
+                                                endIndent: 20,
+                                                indent: 20,
+                                                thickness: 0.5,
+                                                color: Colors.grey.shade400,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        const SizedBox(),
+                                        FadeInRight(
+                                          duration: const Duration(
+                                              milliseconds: 2500),
+                                          child: const SquareTile(
+                                              imagePath:
+                                                  'assets/images/apple.png',
+                                              title: "Continue with Apple"),
+                                        ),
+                                        Row(
+                                          children: [
+                                            Expanded(
+                                              child: Divider(
+                                                endIndent: 20,
+                                                indent: 20,
+                                                thickness: 0.5,
+                                                color: Colors.grey.shade400,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+
+                                  const SizedBox(),
+
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.stretch,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          // ignore: prefer_const_literals_to_create_immutables
+                                          children: [
+                                            FadeIn(
+                                              child: Text(
+                                                'Don\'t have an account?',
+                                                style:
+                                                    GoogleFonts.dancingScript(
+                                                        color: Colors.white,
+                                                        fontSize: 15),
+                                                textAlign: TextAlign.start,
+                                              ),
+                                            ),
+                                            const SizedBox(width: 4),
+                                            FadeInUp(
+                                              duration: const Duration(
+                                                  milliseconds: 3000),
+                                              child: Text(
+                                                'Sign Up ',
+                                                style:
+                                                    GoogleFonts.dancingScript(
+                                                        color: const Color
+                                                            .fromARGB(
+                                                            255, 71, 233, 133),
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 18),
+                                              ),
+                                            ),
+                                          ],
                                         ),
                                         SizedBox(
-                                          width: 5,
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.01),
+                                        FadeInUp(
+                                          duration: const Duration(
+                                              milliseconds: 3300),
+                                          child: Text('Forgot Password?',
+                                              style: GoogleFonts.dancingScript(
+                                                  color: const Color.fromARGB(
+                                                      255, 71, 233, 133),
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 18),
+                                              textAlign: TextAlign.start),
                                         ),
-                                        Icon(
-                                          Icons.arrow_forward_ios,
-                                          color: Colors.white,
-                                          size: 15,
-                                        )
                                       ],
-                                    ))
-                              ],
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                        ],
+                        ),
                       ),
                     ),
-                  ),
-                )),
-            FadeInUp(
-                duration: const Duration(milliseconds: 1400),
-                child: Container(
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
-                    children: <Widget>[
-                      const Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Text(
-                            "Categories",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          Text("All")
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      SizedBox(
-                        height: 150,
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: <Widget>[
-                            makeCategory(
-                                image: 'assets/images/beauty.jpg',
-                                title: 'Beauty',
-                                tag: 'beauty'),
-                            makeCategory(
-                                image: 'assets/images/clothes.jpg',
-                                title: 'Clothes',
-                                tag: 'clothes'),
-                            makeCategory(
-                                image: 'assets/images/perfume.jpg',
-                                title: 'Perfume',
-                                tag: 'perfume'),
-                            makeCategory(
-                                image: 'assets/images/glass.jpg',
-                                title: 'Glass',
-                                tag: 'glass'),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 40,
-                      ),
-                      const Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Text(
-                            "Best Selling by Category",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          Text("All")
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      SizedBox(
-                        height: 150,
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: <Widget>[
-                            makeBestCategory(
-                                image: 'assets/images/tech.jpg', title: 'Tech'),
-                            makeBestCategory(
-                                image: 'assets/images/watch.jpg',
-                                title: 'Watch'),
-                            makeBestCategory(
-                                image: 'assets/images/perfume.jpg',
-                                title: 'Perfume'),
-                            makeBestCategory(
-                                image: 'assets/images/glass.jpg',
-                                title: 'Glass'),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 80,
-                      ),
-                    ],
-                  ),
-                ))
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget makeCategory({image, title, tag}) {
-    return AspectRatio(
-      aspectRatio: 2 / 2.2,
-      child: Hero(
-        tag: tag,
-        child: GestureDetector(
-          onTap: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const HomePage()));
-          },
-          child: Material(
-            child: Container(
-              margin: const EdgeInsets.only(right: 20),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(
-                      image: AssetImage(image), fit: BoxFit.cover)),
-              child: Container(
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    gradient:
-                        LinearGradient(begin: Alignment.bottomRight, colors: [
-                      Colors.black.withOpacity(.8),
-                      Colors.black.withOpacity(.0),
-                    ])),
-                child: Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Text(
-                      title,
-                      style: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16),
-                    )),
+                  ],
+                ),
               ),
-            ),
+            ],
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget makeBestCategory({image, title}) {
-    return AspectRatio(
-      aspectRatio: 3 / 2.2,
-      child: Container(
-        margin: const EdgeInsets.only(right: 20),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            image:
-                DecorationImage(image: AssetImage(image), fit: BoxFit.cover)),
-        child: Container(
-          padding: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              gradient: LinearGradient(begin: Alignment.bottomRight, colors: [
-                Colors.black.withOpacity(.8),
-                Colors.black.withOpacity(.0),
-              ])),
-          child: Align(
-              alignment: Alignment.bottomLeft,
-              child: Text(
-                title,
-                style: const TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16),
-              )),
         ),
       ),
     );

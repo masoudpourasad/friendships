@@ -1,0 +1,58 @@
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class MyButton extends StatelessWidget {
+  final Function()? onTap;
+
+  const MyButton({super.key, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.all(1),
+        decoration: const BoxDecoration(
+          color: Colors.transparent,
+        ),
+        child: Center(
+          child: Text(
+            "Continue",
+            style: GoogleFonts.dancingScript(
+              letterSpacing: 2,
+              color: Colors.grey.shade100,
+              fontSize: 30,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class MyButtonAgree extends StatelessWidget {
+  final Function()? onTap;
+  final String text;
+  const MyButtonAgree({super.key, required this.onTap, required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.all(25),
+        decoration: BoxDecoration(
+          color: const Color.fromARGB(255, 71, 233, 133),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Center(
+          child: Text(
+            text,
+            style: const TextStyle(
+                color: Colors.grey, fontWeight: FontWeight.bold, fontSize: 25),
+          ),
+        ),
+      ),
+    );
+  }
+}
