@@ -1,12 +1,16 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:friendships/login/welcome.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 
-class Firstpage extends StatelessWidget {
+class Firstpage extends StatefulWidget {
   const Firstpage({super.key});
 
+  @override
+  State<Firstpage> createState() => _FirstpageState();
+}
+
+class _FirstpageState extends State<Firstpage> {
   @override
   Widget build(BuildContext context) {
     Future.delayed(const Duration(seconds: 10), () {
@@ -24,13 +28,14 @@ class Firstpage extends StatelessWidget {
         child: Center(
           child: FadeIn(
             duration: const Duration(milliseconds: 3000),
-            child: Text(
-              'The Manimalist',
-              style: GoogleFonts.dancingScript(
-                letterSpacing: 0.5,
-                color: Colors.grey.shade400,
-                fontSize: 40,
-              ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text('The',
+                    style: Theme.of(context).textTheme.copyWith().labelLarge),
+                Text('Minimalist',
+                    style: Theme.of(context).textTheme.copyWith().labelLarge),
+              ],
             ),
           ),
         ),
@@ -97,94 +102,57 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 FadeInRight(
-                  duration: const Duration(milliseconds: 3000),
-                  child: Text(
-                    "Welcome To The Minimalist",
-                    style: GoogleFonts.dancingScript(
-                      color: Colors.grey.shade100,
-                      fontSize: 40,
-                    ),
-                  ),
+                  duration: const Duration(milliseconds: 7000),
+                  child: Text("Welcome To Minimalist",
+                      style: Theme.of(context).textTheme.copyWith().labelLarge),
                 ),
                 const SizedBox(
                   height: 20,
                 ),
                 FadeInLeft(
-                  duration: const Duration(milliseconds: 1800),
-                  child: FadeInLeft(
-                    child: Text(
-                      "Let's Start Discover New Connections",
-                      style: GoogleFonts.dancingScript(
-                        color: Colors.grey.shade400,
-                        fontSize: 20,
-                      ),
-                    ),
-                  ),
+                  duration: const Duration(milliseconds: 5000),
+                  child: Text("Let's Start Discover New Connections,",
+                      style: Theme.of(context).textTheme.copyWith().labelSmall),
                 ),
                 const SizedBox(
                   height: 10,
                 ),
                 FadeInRight(
-                  duration: const Duration(milliseconds: 2000),
-                  child: Text(
-                    "Find Your Friends ",
-                    style: GoogleFonts.dancingScript(
-                      color: Colors.grey.shade400,
-                      fontSize: 20,
-                    ),
-                  ),
+                  duration: const Duration(milliseconds: 5200),
+                  child: Text("Find Your Friends,",
+                      style: Theme.of(context).textTheme.copyWith().labelSmall),
                 ),
                 const SizedBox(
                   height: 10,
                 ),
                 FadeInLeft(
-                  duration: const Duration(milliseconds: 2200),
-                  child: Text(
-                    "Friendship Discovery,Connect & Explore",
-                    style: GoogleFonts.dancingScript(
-                      color: Colors.grey.shade400,
-                      fontSize: 20,
-                    ),
-                  ),
+                  duration: const Duration(milliseconds: 5400),
+                  child: Text("Friendship Discovery,Connect & Explore,",
+                      style: Theme.of(context).textTheme.copyWith().labelSmall),
                 ),
                 const SizedBox(
                   height: 10,
                 ),
                 FadeInRight(
-                  duration: const Duration(milliseconds: 2400),
-                  child: Text(
-                    "Friendship Quest,New Bonds Await",
-                    style: GoogleFonts.dancingScript(
-                      color: Colors.grey.shade400,
-                      fontSize: 20,
-                    ),
-                  ),
+                  duration: const Duration(milliseconds: 5600),
+                  child: Text("Friendship Quest,New Bonds Await,",
+                      style: Theme.of(context).textTheme.copyWith().labelSmall),
                 ),
                 const SizedBox(
                   height: 10,
                 ),
                 FadeInLeft(
-                  duration: const Duration(milliseconds: 2600),
-                  child: Text(
-                    "Explore Connections,Friend Finder",
-                    style: GoogleFonts.dancingScript(
-                      color: Colors.grey.shade400,
-                      fontSize: 20,
-                    ),
-                  ),
+                  duration: const Duration(milliseconds: 5800),
+                  child: Text("Explore Connections,Friend Finder,",
+                      style: Theme.of(context).textTheme.copyWith().labelSmall),
                 ),
                 const SizedBox(
                   height: 10,
                 ),
                 FadeInRight(
-                  duration: const Duration(milliseconds: 2800),
-                  child: Text(
-                    "Connect & Thrive,Embark on Friendship",
-                    style: GoogleFonts.dancingScript(
-                      color: Colors.grey.shade400,
-                      fontSize: 20,
-                    ),
-                  ),
+                  duration: const Duration(milliseconds: 6000),
+                  child: Text("Connect & Thrive,Embark on Friendship...",
+                      style: Theme.of(context).textTheme.copyWith().labelSmall),
                 ),
                 const SizedBox(
                   height: 10,
@@ -212,13 +180,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                 ? Row(
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
-                                        Text(
-                                          "Get Start",
-                                          style: GoogleFonts.dancingScript(
-                                            color: Colors.white,
-                                            fontSize: 30,
-                                          ),
-                                        ),
+                                        Text("Get Start",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .copyWith()
+                                                .labelSmall),
                                       ])
                                 : Container(
                                     decoration: BoxDecoration(

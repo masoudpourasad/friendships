@@ -1,38 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class SquareTile extends StatelessWidget {
   final String imagePath;
   final String title;
+  final Color? color;
+
   const SquareTile({
-    super.key,
+    Key? key,
     required this.imagePath,
     required this.title,
-  });
+    this.color,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.transparent),
-        borderRadius: BorderRadius.circular(15),
-        color: Colors.transparent,
-      ),
+      padding: const EdgeInsets.all(3),
       child: Row(
         children: [
-          Image.asset(
-            imagePath,
-            height: 40,
-          ),
+          if (color != null)
+            ColorFiltered(
+              colorFilter: ColorFilter.mode(color!, BlendMode.srcATop),
+              child: Image.asset(
+                imagePath,
+                height: 40,
+              ),
+            ),
+          if (color == null)
+            Image.asset(
+              imagePath,
+              height: 40,
+            ),
           const SizedBox(width: 20),
           Text(
             title,
-            style: GoogleFonts.dancingScript(
-              color: Colors.grey.shade100,
-              fontSize: 25,
-            ),
-          )
+            style: Theme.of(context).textTheme.copyWith().labelSmall,
+          ),
         ],
       ),
     );

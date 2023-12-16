@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class MyButton extends StatelessWidget {
   final Function()? onTap;
@@ -10,21 +9,20 @@ class MyButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.all(1),
-        decoration: const BoxDecoration(
-          color: Colors.transparent,
-        ),
-        child: Center(
-          child: Text(
-            "Continue",
-            style: GoogleFonts.dancingScript(
-              letterSpacing: 2,
-              color: Colors.grey.shade100,
-              fontSize: 30,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            padding: const EdgeInsets.all(0),
+            decoration: const BoxDecoration(
+              color: Colors.transparent,
+            ),
+            child: Center(
+              child: Text("Continue",
+                  style: Theme.of(context).textTheme.copyWith().labelMedium),
             ),
           ),
-        ),
+        ],
       ),
     );
   }
@@ -39,19 +37,18 @@ class MyButtonAgree extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.all(25),
-        decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 71, 233, 133),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Center(
-          child: Text(
-            text,
-            style: const TextStyle(
-                color: Colors.grey, fontWeight: FontWeight.bold, fontSize: 25),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Container(
+            padding: const EdgeInsets.all(12),
+            decoration: const BoxDecoration(),
+            child: Center(
+              child: Text(text,
+                  style: Theme.of(context).textTheme.copyWith().labelSmall),
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

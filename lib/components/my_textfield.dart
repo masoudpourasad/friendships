@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MyTextField extends StatelessWidget {
-  final dynamic controller;
+  final TextEditingController controller;
   final String hintText;
   final bool obscureText;
   const MyTextField({
@@ -21,6 +21,7 @@ class MyTextField extends StatelessWidget {
       style: const TextStyle(color: Colors.white),
       cursorColor: Colors.grey.shade400,
       decoration: InputDecoration(
+        iconColor: Colors.white,
         focusedErrorBorder: const UnderlineInputBorder(
           borderSide: BorderSide(
             color: Color.fromARGB(255, 71, 233, 133),
@@ -41,9 +42,9 @@ class MyTextField extends StatelessWidget {
         enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.grey.shade400, width: 0.5),
         ),
-        prefixIcon: Icon(
+        prefixIcon: const Icon(
           Icons.email_outlined,
-          color: Colors.grey.shade400,
+          color: Colors.white,
         ),
         hintStyle: GoogleFonts.kalam(color: Colors.grey.shade400),
         focusedBorder: const UnderlineInputBorder(
@@ -68,21 +69,42 @@ class MyPasswordTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      validator: (val) => val!.isEmpty ? 'Veuillez remplir ce champ svp' : null,
+      validator: (val) => val!.isEmpty ? 'Invalid E-mail address!' : null,
       controller: controller,
       obscureText: obscureText,
+      cursorColor: Colors.grey.shade400,
+      style: const TextStyle(color: Colors.white),
       decoration: InputDecoration(
-          suffixIcon: const Icon(Icons.visibility_off),
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade400),
+        iconColor: Colors.white,
+        focusedErrorBorder: const UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: Color.fromARGB(255, 71, 233, 133),
           ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade400),
+        ),
+        errorBorder: const UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: Color.fromARGB(255, 71, 233, 133),
           ),
-          fillColor: Colors.grey.shade400,
-          filled: true,
-          hintText: hintText,
-          hintStyle: TextStyle(color: Colors.grey[400])),
+        ),
+        errorStyle: GoogleFonts.kalam(
+          color: const Color.fromARGB(255, 71, 233, 133),
+        ),
+        fillColor: Colors.transparent,
+        filled: false,
+        hintText: hintText,
+        enabled: true,
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.grey.shade400, width: 0.5),
+        ),
+        prefixIcon: const Icon(
+          Icons.password_outlined,
+          color: Colors.white,
+        ),
+        hintStyle: GoogleFonts.kalam(color: Colors.grey.shade400),
+        focusedBorder: const UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.white),
+        ),
+      ),
     );
   }
 }

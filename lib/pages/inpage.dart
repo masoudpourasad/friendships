@@ -11,7 +11,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.black12,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -21,6 +21,13 @@ class _HomePageState extends State<HomePage> {
                 const EdgeInsets.only(top: 50, right: 20, left: 20, bottom: 10),
             child: Row(
               children: <Widget>[
+                IconButton(
+                  icon: const Icon(Icons.arrow_back_ios),
+                  color: Theme.of(context).colorScheme.outlineVariant,
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
                 Expanded(
                   child: Container(
                     decoration: BoxDecoration(
@@ -83,20 +90,20 @@ class _HomePageState extends State<HomePage> {
                         scrollDirection: Axis.horizontal,
                         children: <Widget>[
                           makeStory(
-                              storyImage: 'assets/images/story/story-1.jpg',
-                              userImage: 'assets/images/aatik-tasneem.jpg',
+                              storyImage: 'assets/images/followme.png',
+                              userImage: 'assets/images/person.jpg',
                               userName: 'Aatik Tasneem'),
                           makeStory(
-                              storyImage: 'assets/images/story/story-3.jpg',
-                              userImage: 'assets/images/aiony-haust.jpg',
+                              storyImage: 'assets/images/tech.jpg',
+                              userImage: 'assets/images/person.jpg',
                               userName: 'Aiony Haust'),
                           makeStory(
-                              storyImage: 'assets/images/story/story-4.jpg',
-                              userImage: 'assets/images/averie-woodard.jpg',
+                              storyImage: 'assets/images/person.jpg',
+                              userImage: 'assets/images/person.jpg',
                               userName: 'Averie Woodard'),
                           makeStory(
-                              storyImage: 'assets/images/story/story-5.jpg',
-                              userImage: 'assets/images/azamat-zhanisov.jpg',
+                              storyImage: 'assets/images/followme.png',
+                              userImage: 'assets/images/person.jpg',
                               userName: 'Azamat Zhanisov'),
                         ],
                       ),
@@ -106,25 +113,25 @@ class _HomePageState extends State<HomePage> {
                     ),
                     makeFeed(
                         userName: 'Aiony Haust',
-                        userImage: 'assets/images/aiony-haust.jpg',
+                        userImage: 'assets/images/splash.jpg',
                         feedTime: '1 hr ago',
                         feedText:
                             'All the Lorem Ipsum generators on the Internet tend to repeat predefined.',
-                        feedImage: 'assets/images/story/story-2.jpg'),
+                        feedImage: 'assets/images/splash.jpg'),
                     makeFeed(
                         userName: 'Azamat Zhanisov',
-                        userImage: 'assets/images/azamat-zhanisov.jpg',
+                        userImage: 'assets/images/splash.jpg',
                         feedTime: '3 mins ago',
                         feedText:
                             "All the Lorem Ipsum generators on the Internet tend to repeat predefined.All the Lorem Ipsum generators on the Internet tend to repeat predefined.All the Lorem Ipsum generators on the Internet tend to repeat predefined.",
                         feedImage: ''),
                     makeFeed(
                         userName: 'Azamat Zhanisov',
-                        userImage: 'assets/images/azamat-zhanisov.jpg',
+                        userImage: 'assets/images/test.jpg',
                         feedTime: '3 mins ago',
                         feedText:
                             "All the Lorem Ipsum generators on the Internet tend to repeat predefined.",
-                        feedImage: 'assets/images/averie-woodard.jpg'),
+                        feedImage: 'assets/images/test.jpg'),
                   ],
                 ),
               ),
@@ -403,5 +410,4 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-  }
-  
+}
