@@ -62,7 +62,7 @@ class WelcomePage extends StatelessWidget {
                     ),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.25),
                     Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.only(left: 20),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [

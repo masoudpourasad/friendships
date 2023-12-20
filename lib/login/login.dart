@@ -6,7 +6,7 @@ import 'package:friendships/components/my_button.dart';
 import 'package:friendships/components/my_textfield.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:friendships/pages/inpage.dart';
+import 'package:friendships/pages/profilepage.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginPage extends StatefulWidget {
@@ -81,8 +81,11 @@ class _LoginPageState extends State<LoginPage> {
                     SizedBox(height: MediaQuery.of(context).size.height * 0.25),
                     FadeInDown(
                         duration: const Duration(milliseconds: 3000),
-                        child: Text("Login",
-                            style: Theme.of(context).textTheme.labelLarge)),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: Text("Login",
+                              style: Theme.of(context).textTheme.labelLarge),
+                        )),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.02),
                     ClipRect(
                       child: BackdropFilter(

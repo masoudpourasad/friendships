@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:friendships/components/my_floatingactionbutton.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -8,10 +10,41 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final ScrollController _scrollController = ScrollController();
+  bool isFloatingActionButtonVisible = true;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _scrollController.addListener(() {
+      if (_scrollController.hasClients) {
+        // Add a null check for _scrollController.position
+        if (_scrollController.position.userScrollDirection ==
+            ScrollDirection.reverse) {
+          // Scrolling down, hide the FloatingActionButton
+          if (isFloatingActionButtonVisible) {
+            setState(() {
+              isFloatingActionButtonVisible = false;
+            });
+          }
+        } else if (_scrollController.position.userScrollDirection ==
+            ScrollDirection.forward) {
+          // Scrolling up, show the FloatingActionButton
+          if (!isFloatingActionButtonVisible) {
+            setState(() {
+              isFloatingActionButtonVisible = true;
+            });
+          }
+        }
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black12,
+      backgroundColor: Colors.black,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -21,36 +54,19 @@ class _HomePageState extends State<HomePage> {
                 const EdgeInsets.only(top: 50, right: 20, left: 20, bottom: 10),
             child: Row(
               children: <Widget>[
-                IconButton(
-                  icon: const Icon(Icons.arrow_back_ios),
-                  color: Theme.of(context).colorScheme.outlineVariant,
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
+                const SizedBox(
+                  width: 20,
                 ),
                 Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: Colors.grey[200]),
-                    child: const TextField(
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(
-                          Icons.search,
-                          color: Colors.grey,
-                        ),
-                        border: InputBorder.none,
-                        hintStyle: TextStyle(color: Colors.grey),
-                        hintText: "Search",
-                      ),
-                    ),
-                  ),
-                ),
+                    child: Text(
+                  'Hello masoud',
+                  style: Theme.of(context).textTheme.labelMedium,
+                )),
                 const SizedBox(
                   width: 20,
                 ),
                 Icon(
-                  Icons.camera_alt,
+                  Icons.verified_user,
                   color: Colors.grey[800],
                   size: 30,
                 )
@@ -59,6 +75,7 @@ class _HomePageState extends State<HomePage> {
           ),
           Expanded(
             child: SingleChildScrollView(
+              controller: _scrollController,
               scrollDirection: Axis.vertical,
               child: Padding(
                 padding: const EdgeInsets.all(20),
@@ -138,6 +155,11 @@ class _HomePageState extends State<HomePage> {
             ),
           )
         ],
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: Visibility(
+        visible: isFloatingActionButtonVisible,
+        child: const Floatingactionbutton(),
       ),
     );
   }

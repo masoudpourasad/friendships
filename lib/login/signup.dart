@@ -80,9 +80,12 @@ class _SignupState extends State<Signup> {
                     SizedBox(height: MediaQuery.of(context).size.height * 0.25),
                     FadeInDown(
                       duration: const Duration(milliseconds: 3000),
-                      child: Text(
-                        "Sign In",
-                        style: Theme.of(context).textTheme.labelLarge,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 20),
+                        child: Text(
+                          "Sign In",
+                          style: Theme.of(context).textTheme.labelLarge,
+                        ),
                       ),
                     ),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.02),

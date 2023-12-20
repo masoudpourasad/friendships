@@ -107,7 +107,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       style: Theme.of(context).textTheme.copyWith().labelLarge),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 30,
                 ),
                 FadeInLeft(
                   duration: const Duration(milliseconds: 5000),
