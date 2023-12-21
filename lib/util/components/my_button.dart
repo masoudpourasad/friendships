@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 
-class MyButton extends StatelessWidget {
+class MyButton extends StatefulWidget {
   final Function()? onTap;
 
   const MyButton({super.key, required this.onTap});
 
   @override
+  State<MyButton> createState() => _MyButtonState();
+}
+
+class _MyButtonState extends State<MyButton> {
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: widget.onTap,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -19,7 +24,7 @@ class MyButton extends StatelessWidget {
             ),
             child: Center(
               child: Text("Continue",
-                  style: Theme.of(context).textTheme.copyWith().labelMedium),
+                  style: Theme.of(context).textTheme.copyWith().labelLarge),
             ),
           ),
         ],
@@ -38,15 +43,12 @@ class MyButtonAgree extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Container(
-            padding: const EdgeInsets.all(12),
-            decoration: const BoxDecoration(),
-            child: Center(
-              child: Text(text,
-                  style: Theme.of(context).textTheme.copyWith().labelSmall),
-            ),
+          Center(
+            child: Text(text,
+                style: Theme.of(context).textTheme.copyWith().labelLarge),
           ),
         ],
       ),

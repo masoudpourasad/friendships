@@ -1,26 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:friendships/login/logopage.dart';
+import 'package:friendships/views/screens/auth/logopage.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 final theme = ThemeData(
   useMaterial3: true,
   colorScheme: ColorScheme.fromSeed(
-    seedColor: const Color.fromARGB(219, 234, 233, 223),
+    seedColor: Colors.white,
   ),
   textTheme: TextTheme(
     labelLarge: GoogleFonts.dancingScript(
       letterSpacing: 1,
       color: Colors.white,
-      fontSize: 40,
+      fontSize: 30,
     ),
-    labelMedium: GoogleFonts.dancingScript(
+    labelMedium: GoogleFonts.aBeeZee(
       color: Colors.white,
       fontSize: 32,
     ),
-    labelSmall: GoogleFonts.dancingScript(
+    labelSmall: GoogleFonts.aBeeZee(
       color: Colors.white,
-      fontSize: 22,
+      fontSize: 12,
     ),
+    bodySmall: GoogleFonts.aBeeZee(color: Colors.black, fontSize: 12),
   ),
 );
 
@@ -37,3 +38,11 @@ class MyApp extends StatelessWidget {
         home: const Firstpage());
   }
 }
+
+// ThemeData themeData(ThemeData theme) {
+//   return theme.copyWith(
+//     textTheme: GoogleFonts.sourceSansProTextTheme(
+//       theme.textTheme,
+//     ),
+//   );
+// }

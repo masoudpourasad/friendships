@@ -2,11 +2,11 @@
 
 import 'dart:ui';
 import 'package:animate_do/animate_do.dart';
-import 'package:friendships/components/my_button.dart';
-import 'package:friendships/components/my_textfield.dart';
+import 'package:friendships/util/components/my_button.dart';
+import 'package:friendships/util/components/my_textfield.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:friendships/pages/profilepage.dart';
+import 'package:friendships/views/screens/main_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginPage extends StatefulWidget {
@@ -242,7 +242,7 @@ class _LoginPageState extends State<LoginPage> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  HomePage()));
+                                                  MainScreen()));
                                     },
                                   ),
                                 ),
