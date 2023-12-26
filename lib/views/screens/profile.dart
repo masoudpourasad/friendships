@@ -16,6 +16,7 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: SizedBox(
@@ -35,6 +36,7 @@ class _ProfileState extends State<Profile> {
               Text(
                 names[random.nextInt(10)],
                 style: const TextStyle(
+                  color: Colors.white,
                   fontWeight: FontWeight.bold,
                   fontSize: 22,
                 ),
@@ -42,7 +44,9 @@ class _ProfileState extends State<Profile> {
               const SizedBox(height: 3),
               const Text(
                 "Status should be here",
-                style: TextStyle(),
+                style: TextStyle(
+                  color: Colors.white,
+                ),
               ),
               const SizedBox(height: 20),
               Row(
@@ -50,9 +54,7 @@ class _ProfileState extends State<Profile> {
                 children: <Widget>[
                   TextButton(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(
-                        Colors.grey,
-                      ),
+                      backgroundColor: MaterialStateProperty.all(Colors.black),
                     ),
                     onPressed: () {},
                     child: const Icon(
@@ -63,9 +65,7 @@ class _ProfileState extends State<Profile> {
                   const SizedBox(width: 10),
                   TextButton(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(
-                        Theme.of(context).colorScheme.secondary,
-                      ),
+                      backgroundColor: MaterialStateProperty.all(Colors.black),
                     ),
                     onPressed: () {},
                     child: const Icon(
@@ -92,7 +92,7 @@ class _ProfileState extends State<Profile> {
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 primary: false,
-                padding: const EdgeInsets.all(5),
+                padding: const EdgeInsets.all(8),
                 itemCount: 15,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
@@ -100,7 +100,7 @@ class _ProfileState extends State<Profile> {
                 ),
                 itemBuilder: (BuildContext context, int index) {
                   return Padding(
-                    padding: const EdgeInsets.all(5.0),
+                    padding: const EdgeInsets.all(2),
                     child: Image.asset(
                       "assets/images/cm${random.nextInt(10)}.jpeg",
                       fit: BoxFit.cover,
@@ -121,6 +121,7 @@ class _ProfileState extends State<Profile> {
         Text(
           random.nextInt(10000).toString(),
           style: const TextStyle(
+            color: Colors.white,
             fontWeight: FontWeight.bold,
             fontSize: 22,
           ),
@@ -128,7 +129,9 @@ class _ProfileState extends State<Profile> {
         const SizedBox(height: 4),
         Text(
           title,
-          style: const TextStyle(),
+          style: const TextStyle(
+            color: Colors.white,
+          ),
         ),
       ],
     );

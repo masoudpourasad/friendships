@@ -7,6 +7,7 @@ import 'package:friendships/util/components/my_textfield.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:friendships/views/screens/main_screen.dart';
+import 'package:friendships/views/widgets/animations/fade_page_route.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginPage extends StatefulWidget {
@@ -102,176 +103,185 @@ class _LoginPageState extends State<LoginPage> {
                           height: MediaQuery.of(context).size.height * 0.50,
                           child: Form(
                             key: _formKey,
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                SizedBox(
-                                  height: 30,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      width: 20,
-                                    ),
-                                    FadeInRight(
-                                      duration:
-                                          const Duration(milliseconds: 3200),
-                                      child: CircleAvatar(
-                                        radius: 40,
-                                        backgroundImage: NetworkImage(
-                                            'https://img.freepik.com/free-photo/3d-portrait-businessman_23-2150793879.jpg?t=st=1702734732~exp=1702738332~hmac=03e664b1ddfb777508fe06033dc2c1bf9831b63c5e5e0376f6d2ac7c2c07a202&w=1380'),
+                            child: SingleChildScrollView(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    height: 30,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        width: 20,
                                       ),
-                                    ),
-                                    SizedBox(
-                                      width: 20,
-                                    ),
-                                    Flexible(
-                                      child: FadeInLeft(
+                                      FadeInRight(
                                         duration:
                                             const Duration(milliseconds: 3200),
-                                        child: Text(
-                                          'Hello ${widget.email.replaceAll('@icloud.com', '').replaceAll('@gmail.com', '').replaceAll('@hotmail.com', '')}',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .copyWith()
-                                              .labelMedium,
+                                        child: CircleAvatar(
+                                          radius: 40,
+                                          backgroundImage: NetworkImage(
+                                              'https://img.freepik.com/free-photo/3d-portrait-businessman_23-2150793879.jpg?t=st=1702734732~exp=1702738332~hmac=03e664b1ddfb777508fe06033dc2c1bf9831b63c5e5e0376f6d2ac7c2c07a202&w=1380'),
                                         ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 30,
-                                ),
-                                Divider(
-                                  color: Colors.grey.shade500,
-                                  indent: 25,
-                                  endIndent: 25,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 25.0),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
+                                      SizedBox(
+                                        width: 20,
+                                      ),
                                       Flexible(
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            FadeInRight(
-                                              duration: const Duration(
-                                                  milliseconds: 3400),
-                                              child: TextFormField(
-                                                enabled: false,
-                                                controller: usernameController,
-                                                style: const TextStyle(
-                                                    color: Colors.white),
-                                                decoration: InputDecoration(
-                                                  iconColor: Colors.white,
-                                                  focusedErrorBorder:
-                                                      const UnderlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color: Color.fromARGB(
-                                                          255, 71, 233, 133),
+                                        child: FadeInLeft(
+                                          duration: const Duration(
+                                              milliseconds: 3200),
+                                          child: Text(
+                                            'Hello ${widget.email.replaceAll('@icloud.com', '').replaceAll('@gmail.com', '').replaceAll('@hotmail.com', '')}',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .labelLarge,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 30,
+                                  ),
+                                  Divider(
+                                    color: Colors.grey.shade500,
+                                    indent: 25,
+                                    endIndent: 25,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 25.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Flexible(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              FadeInRight(
+                                                duration: const Duration(
+                                                    milliseconds: 3400),
+                                                child: TextFormField(
+                                                  enabled: false,
+                                                  controller:
+                                                      usernameController,
+                                                  style: const TextStyle(
+                                                      color: Colors.white),
+                                                  decoration: InputDecoration(
+                                                    iconColor: Colors.white,
+                                                    focusedErrorBorder:
+                                                        const UnderlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color: Color.fromARGB(
+                                                            255, 71, 233, 133),
+                                                      ),
                                                     ),
-                                                  ),
-                                                  errorBorder:
-                                                      const UnderlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color: Color.fromARGB(
-                                                          255, 71, 233, 133),
+                                                    errorBorder:
+                                                        const UnderlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color: Color.fromARGB(
+                                                            255, 71, 233, 133),
+                                                      ),
                                                     ),
-                                                  ),
-                                                  errorStyle: GoogleFonts.kalam(
-                                                    color: const Color.fromARGB(
-                                                        255, 71, 233, 133),
-                                                  ),
-                                                  fillColor: Colors.transparent,
-                                                  filled: false,
-                                                  enabled: true,
-                                                  enabledBorder:
-                                                      UnderlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                        color: Colors
-                                                            .grey.shade400,
-                                                        width: 0.5),
-                                                  ),
-                                                  prefixIcon: const Icon(
-                                                    Icons.email_outlined,
-                                                    color: Colors.white,
-                                                  ),
-                                                  hintStyle: GoogleFonts.kalam(
+                                                    errorStyle:
+                                                        GoogleFonts.kalam(
                                                       color:
-                                                          Colors.grey.shade400),
-                                                  focusedBorder:
-                                                      const UnderlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                        color: Colors.white),
+                                                          const Color.fromARGB(
+                                                              255,
+                                                              71,
+                                                              233,
+                                                              133),
+                                                    ),
+                                                    fillColor:
+                                                        Colors.transparent,
+                                                    filled: false,
+                                                    enabled: true,
+                                                    enabledBorder:
+                                                        UnderlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                          color: Colors
+                                                              .grey.shade400,
+                                                          width: 0.5),
+                                                    ),
+                                                    prefixIcon: const Icon(
+                                                      Icons.email_outlined,
+                                                      color: Colors.white,
+                                                    ),
+                                                    hintStyle:
+                                                        GoogleFonts.kalam(
+                                                            color: Colors
+                                                                .grey.shade400),
+                                                    focusedBorder:
+                                                        const UnderlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                          color: Colors.white),
+                                                    ),
                                                   ),
                                                 ),
                                               ),
-                                            ),
-                                            Divider(
-                                              color: Colors.grey.shade500,
-                                            ),
-                                            const SizedBox(height: 10),
-                                            FadeInLeft(
-                                              duration: const Duration(
-                                                  milliseconds: 3400),
-                                              child: MyPasswordTextField(
-                                                controller: passwordController,
-                                                hintText: 'Password',
-                                                obscureText: true,
+                                              Divider(
+                                                color: Colors.grey.shade500,
                                               ),
-                                            ),
-                                          ],
-                                        ),
+                                              const SizedBox(height: 10),
+                                              FadeInLeft(
+                                                duration: const Duration(
+                                                    milliseconds: 3400),
+                                                child: MyPasswordTextField(
+                                                  controller:
+                                                      passwordController,
+                                                  hintText: 'Password',
+                                                  obscureText: true,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  FadeIn(
+                                    duration:
+                                        const Duration(milliseconds: 7000),
+                                    child: MyButton(
+                                      onTap: () {
+                                        Navigator.push(context,
+                                            FadePageRoute(MainScreen()));
+                                      },
+                                    ),
+                                  ),
+                                  const SizedBox(height: 10),
+                                  Divider(
+                                    color: Colors.grey.shade500,
+                                    indent: 25,
+                                    endIndent: 25,
+                                  ),
+                                  const SizedBox(height: 30),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      FadeInUp(
+                                        duration:
+                                            const Duration(milliseconds: 5000),
+                                        child: Text('Forgot Password ?',
+                                            style: TextStyle(
+                                                color: Color.fromARGB(
+                                                    255, 71, 233, 133),
+                                                fontSize: 10),
+                                            textAlign: TextAlign.start),
+                                      ),
+                                      SizedBox(
+                                        width: 30,
                                       )
                                     ],
                                   ),
-                                ),
-                                SizedBox(height: 10),
-                                FadeIn(
-                                  duration: const Duration(milliseconds: 7000),
-                                  child: MyButton(
-                                    onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  MainScreen()));
-                                    },
-                                  ),
-                                ),
-                                const SizedBox(height: 10),
-                                Divider(
-                                  color: Colors.grey.shade500,
-                                  indent: 25,
-                                  endIndent: 25,
-                                ),
-                                const SizedBox(height: 30),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    FadeInUp(
-                                      duration:
-                                          const Duration(milliseconds: 5000),
-                                      child: Text('Forgot Password ?',
-                                          style: TextStyle(
-                                              color: Color.fromARGB(
-                                                  255, 71, 233, 133),
-                                              fontSize: 10),
-                                          textAlign: TextAlign.start),
-                                    ),
-                                    SizedBox(
-                                      width: 30,
-                                    )
-                                  ],
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ),

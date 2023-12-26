@@ -4,6 +4,7 @@ import 'package:friendships/views/screens/friends.dart';
 import 'package:friendships/views/screens/home.dart';
 import 'package:friendships/views/screens/notifications.dart';
 import 'package:friendships/views/screens/profile.dart';
+import 'package:friendships/views/widgets/icon_badge.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -102,7 +103,8 @@ class Floatingactionbutton extends StatelessWidget {
           ),
           Expanded(
             child: IconButton(
-              icon: const Icon(Icons.notifications, color: Colors.white),
+              icon: const IconBadge(
+                  icon: Icons.notifications, color: Colors.white),
               onPressed: () => _navigateToPage(context, 3),
             ),
           ),

@@ -13,14 +13,22 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
-        title: const Text("Feeds"),
+        title: const Text(
+          "Post",
+          style: TextStyle(
+            fontSize: 26,
+            color: Colors.white,
+          ),
+        ),
         centerTitle: true,
         actions: <Widget>[
           IconButton(
             icon: const Icon(
+              color: Colors.white,
               Icons.filter_list,
             ),
             onPressed: () {},

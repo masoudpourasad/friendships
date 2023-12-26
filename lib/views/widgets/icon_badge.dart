@@ -34,7 +34,7 @@ class _IconBadgeState extends State<IconBadge> {
             padding: const EdgeInsets.all(1),
             decoration: BoxDecoration(
               color: Colors.red,
-              borderRadius: BorderRadius.circular(6),
+              borderRadius: BorderRadius.circular(5),
             ),
             constraints: const BoxConstraints(
               minWidth: 11,
@@ -43,9 +43,10 @@ class _IconBadgeState extends State<IconBadge> {
             child: const Padding(
               padding: EdgeInsets.only(top: 1),
               child: Text(
-                '16',
+                '6',
                 style: TextStyle(
                   color: Colors.white,
+                  fontWeight: FontWeight.bold,
                   fontSize: 9,
                 ),
                 textAlign: TextAlign.center,

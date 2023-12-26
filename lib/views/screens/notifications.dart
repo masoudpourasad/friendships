@@ -12,16 +12,23 @@ class _NotificationsState extends State<Notifications> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
         title: const Text(
           "Notifications",
+          style: TextStyle(
+            fontSize: 26,
+            color: Colors.white,
+          ),
         ),
         centerTitle: true,
         actions: <Widget>[
           IconButton(
             icon: const Icon(
               Icons.filter_list,
+              color: Colors.white,
             ),
             onPressed: () {},
           ),
@@ -35,7 +42,9 @@ class _NotificationsState extends State<Notifications> {
             child: SizedBox(
               height: 0.5,
               width: MediaQuery.of(context).size.width / 1.3,
-              child: const Divider(),
+              child: const Divider(
+                thickness: 0.1,
+              ),
             ),
           );
         },
@@ -52,12 +61,14 @@ class _NotificationsState extends State<Notifications> {
                 radius: 25,
               ),
               contentPadding: const EdgeInsets.all(0),
-              title: Text(notif['notif']),
+              title: Text(notif['notif'],
+                  style: const TextStyle(color: Colors.white70, fontSize: 13)),
               trailing: Text(
                 notif['time'],
-                style: const TextStyle(
+                style: TextStyle(
                   fontWeight: FontWeight.w300,
                   fontSize: 11,
+                  color: Colors.grey.shade500,
                 ),
               ),
               onTap: () {},

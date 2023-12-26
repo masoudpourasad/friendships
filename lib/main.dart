@@ -9,17 +9,16 @@ final theme = ThemeData(
   ),
   textTheme: TextTheme(
     labelLarge: GoogleFonts.dancingScript(
-      letterSpacing: 1,
       color: Colors.white,
-      fontSize: 30,
+      fontSize: 35,
     ),
-    labelMedium: GoogleFonts.aBeeZee(
+    labelMedium: GoogleFonts.dancingScript(
       color: Colors.white,
-      fontSize: 32,
+      fontSize: 18,
     ),
-    labelSmall: GoogleFonts.aBeeZee(
+    labelSmall: GoogleFonts.dancingScript(
       color: Colors.white,
-      fontSize: 12,
+      fontSize: 15,
     ),
     bodySmall: GoogleFonts.aBeeZee(color: Colors.black, fontSize: 12),
   ),
@@ -35,14 +34,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: theme,
-        home: const Firstpage());
+        home: const HomePage());
   }
 }
-
-// ThemeData themeData(ThemeData theme) {
-//   return theme.copyWith(
-//     textTheme: GoogleFonts.sourceSansProTextTheme(
-//       theme.textTheme,
-//     ),
-//   );
-// }

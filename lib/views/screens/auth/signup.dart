@@ -8,19 +8,27 @@ import 'package:friendships/util/components/my_textfield.dart';
 import 'package:friendships/util/components/square_tile.dart';
 import 'package:friendships/views/screens/auth/logopage.dart';
 import 'package:friendships/views/screens/auth/signin.dart';
+import 'package:friendships/views/widgets/animations/fade_page_route.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:page_transition/page_transition.dart';
 
-@override
-class WelcomePage extends StatelessWidget {
-  WelcomePage({super.key});
+class WelcomePage extends StatefulWidget {
+  const WelcomePage({super.key});
 
+  @override
+  State<WelcomePage> createState() => _WelcomePageState();
+}
+
+class _WelcomePageState extends State<WelcomePage> {
   final usernameController = TextEditingController();
+
   final passwordController = TextEditingController();
 
   final double _sigmaX = 5;
+
   final double _sigmaY = 5;
+
   final double _opacity = 0.2;
+
   final _formKey = GlobalKey<FormState>();
 
   void signUserIn() {}
@@ -56,9 +64,8 @@ class WelcomePage extends StatelessWidget {
                           onPressed: () {
                             Navigator.push(
                               context,
-                              PageTransition(
-                                type: PageTransitionType.fade,
-                                child: const HomePage(),
+                              FadePageRoute(
+                                const LogoPage(),
                               ),
                             );
                           },
@@ -100,191 +107,169 @@ class WelcomePage extends StatelessWidget {
                               height: MediaQuery.of(context).size.height * 0.50,
                               child: Form(
                                 key: _formKey,
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    const SizedBox(
-                                      height: 30,
-                                    ),
-                                    FadeIn(
-                                      duration:
-                                          const Duration(milliseconds: 5000),
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(
-                                            right: 28, left: 28),
-                                        child: MyTextField(
-                                          controller: usernameController,
-                                          hintText: 'Email',
-                                          obscureText: false,
+                                child: SingleChildScrollView(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      const SizedBox(
+                                        height: 30,
+                                      ),
+                                      FadeIn(
+                                        duration:
+                                            const Duration(milliseconds: 5000),
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(
+                                              right: 28, left: 28),
+                                          child: MyTextField(
+                                            controller: usernameController,
+                                            hintText: 'Email',
+                                            obscureText: false,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    FadeIn(
-                                      duration:
-                                          const Duration(milliseconds: 5000),
-                                      child: MyButton(
-                                        onTap: (() {
-                                          if (_formKey.currentState!
-                                              .validate()) {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) => Signup(
-                                                      email: usernameController
-                                                          .text)),
-                                            );
-                                          } else {
-                                            if (kDebugMode) {
-                                              print('not valid');
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      FadeIn(
+                                        duration:
+                                            const Duration(milliseconds: 5000),
+                                        child: MyButton(
+                                          onTap: (() {
+                                            if (_formKey.currentState!
+                                                .validate()) {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) => Signup(
+                                                        email:
+                                                            usernameController
+                                                                .text)),
+                                              );
+                                            } else {
+                                              if (kDebugMode) {
+                                                print('not valid');
+                                              }
                                             }
-                                          }
-                                        }),
+                                          }),
+                                        ),
                                       ),
-                                    ),
-                                    const SizedBox(
-                                      height: 15,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Expanded(
-                                          child: Divider(
-                                            indent: 30,
-                                            thickness: 0.5,
-                                            color: Colors.grey.shade400,
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 10.0),
-                                          child: Text('Or',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .labelSmall),
-                                        ),
-                                        Expanded(
-                                          child: Divider(
-                                            endIndent: 30,
-                                            thickness: 0.5,
-                                            color: Colors.grey.shade400,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    const SizedBox(),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
+                                      const SizedBox(
+                                        height: 15,
+                                      ),
+                                      Row(
                                         children: [
-                                          FadeInLeft(
-                                            duration: const Duration(
-                                                milliseconds: 2500),
-                                            child: const SquareTile(
-                                              imagePath:
-                                                  'assets/images/google.png',
-                                              title: "Continue with Google",
+                                          Expanded(
+                                            child: Divider(
+                                              indent: 30,
+                                              thickness: 0.5,
+                                              color: Colors.grey.shade400,
                                             ),
                                           ),
-                                          Row(
-                                            children: [
-                                              Expanded(
-                                                child: Divider(
-                                                  endIndent: 20,
-                                                  indent: 20,
-                                                  thickness: 0.5,
-                                                  color: Colors.grey.shade400,
-                                                ),
-                                              ),
-                                            ],
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 10.0),
+                                            child: Text('Or',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .labelSmall),
                                           ),
-                                          const SizedBox(),
-                                          FadeInRight(
-                                            duration: const Duration(
-                                                milliseconds: 2500),
-                                            child: SquareTile(
-                                                color: Colors.grey.shade400,
-                                                imagePath:
-                                                    'assets/images/sms.png',
-                                                title: "Continue with Number"),
-                                          ),
-                                          Row(
-                                            children: [
-                                              Expanded(
-                                                child: Divider(
-                                                  endIndent: 20,
-                                                  indent: 20,
-                                                  thickness: 0.5,
-                                                  color: Colors.grey.shade400,
-                                                ),
-                                              ),
-                                            ],
+                                          Expanded(
+                                            child: Divider(
+                                              endIndent: 30,
+                                              thickness: 0.5,
+                                              color: Colors.grey.shade400,
+                                            ),
                                           ),
                                         ],
                                       ),
-                                    ),
-                                    const SizedBox(),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.stretch,
-                                        children: [
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              FadeInUp(
-                                                duration: const Duration(
-                                                    milliseconds: 3000),
-                                                child: Text(
-                                                  'Don\'t have an account?',
-                                                  style:
-                                                      GoogleFonts.dancingScript(
-                                                          color: Colors.white,
-                                                          fontSize: 15),
-                                                  textAlign: TextAlign.start,
-                                                ),
+                                      const SizedBox(),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            FadeInLeft(
+                                              duration: const Duration(
+                                                  milliseconds: 2500),
+                                              child: const SquareTile(
+                                                imagePath:
+                                                    'assets/images/google.png',
+                                                title: "Continue with Google",
                                               ),
-                                              const SizedBox(width: 4),
-                                              FadeInUp(
-                                                duration: const Duration(
-                                                    milliseconds: 3000),
-                                                child: Text(
-                                                  'Sign Up ',
-                                                  style:
-                                                      GoogleFonts.dancingScript(
-                                                          color: const Color
-                                                              .fromARGB(255, 71,
-                                                              233, 133),
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontSize: 18),
+                                            ),
+                                            Row(
+                                              children: [
+                                                Expanded(
+                                                  child: Divider(
+                                                    endIndent: 20,
+                                                    indent: 20,
+                                                    thickness: 0.5,
+                                                    color: Colors.grey.shade400,
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
-                                          ),
-                                          SizedBox(
-                                              height: MediaQuery.of(context)
-                                                      .size
-                                                      .height *
-                                                  0.01),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              FadeInUp(
-                                                duration: const Duration(
-                                                    milliseconds: 3300),
-                                                child: Text('Forgot Password?',
+                                              ],
+                                            ),
+                                            const SizedBox(),
+                                            FadeInRight(
+                                              duration: const Duration(
+                                                  milliseconds: 2500),
+                                              child: SquareTile(
+                                                  color: Colors.grey.shade400,
+                                                  imagePath:
+                                                      'assets/images/sms.png',
+                                                  title:
+                                                      "Continue with Number"),
+                                            ),
+                                            Row(
+                                              children: [
+                                                Expanded(
+                                                  child: Divider(
+                                                    endIndent: 20,
+                                                    indent: 20,
+                                                    thickness: 0.5,
+                                                    color: Colors.grey.shade400,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      const SizedBox(),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.stretch,
+                                          children: [
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                FadeInUp(
+                                                  duration: const Duration(
+                                                      milliseconds: 3000),
+                                                  child: Text(
+                                                    'Don\'t have an account?',
+                                                    style: GoogleFonts
+                                                        .dancingScript(
+                                                            color: Colors.white,
+                                                            fontSize: 15),
+                                                    textAlign: TextAlign.start,
+                                                  ),
+                                                ),
+                                                const SizedBox(width: 4),
+                                                FadeInUp(
+                                                  duration: const Duration(
+                                                      milliseconds: 3000),
+                                                  child: Text(
+                                                    'Sign Up ',
                                                     style: GoogleFonts
                                                         .dancingScript(
                                                             color: const Color
@@ -293,14 +278,47 @@ class WelcomePage extends StatelessWidget {
                                                             fontWeight:
                                                                 FontWeight.bold,
                                                             fontSize: 18),
-                                                    textAlign: TextAlign.start),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            SizedBox(
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .height *
+                                                    0.01),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                FadeInUp(
+                                                  duration: const Duration(
+                                                      milliseconds: 3300),
+                                                  child: Text(
+                                                      'Forgot Password?',
+                                                      style: GoogleFonts
+                                                          .dancingScript(
+                                                              color:
+                                                                  const Color
+                                                                      .fromARGB(
+                                                                      255,
+                                                                      71,
+                                                                      233,
+                                                                      133),
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              fontSize: 18),
+                                                      textAlign:
+                                                          TextAlign.start),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),

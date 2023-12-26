@@ -69,7 +69,7 @@ class MyPasswordTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      validator: (val) => val!.isEmpty ? 'Invalid E-mail address!' : null,
+      validator: (val) => val!.isEmpty ? 'Invalid password!' : null,
       controller: controller,
       obscureText: obscureText,
       cursorColor: Colors.grey.shade400,

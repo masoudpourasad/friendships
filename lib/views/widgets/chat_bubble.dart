@@ -203,7 +203,8 @@ class _ChatBubbleState extends State<ChatBubble> {
             widget.time,
             style: const TextStyle(
               color: Colors.white,
-              fontSize: 10.0,
+              fontSize: 11.0,
+              fontWeight: FontWeight.w300,
             ),
           ),
         ),

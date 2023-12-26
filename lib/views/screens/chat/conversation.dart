@@ -20,15 +20,10 @@ class _ConversationState extends State<Conversation> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
+        automaticallyImplyLeading: true,
+        foregroundColor: Colors.white,
         elevation: 0,
         backgroundColor: Colors.transparent,
-        leading: IconButton(
-          icon: const Icon(
-            color: Colors.white,
-            Icons.keyboard_backspace,
-          ),
-          onPressed: () => Navigator.pop(context),
-        ),
         titleSpacing: 0,
         title: InkWell(
           child: Row(
