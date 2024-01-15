@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "145856772998",
+    "project_id": "friendships-797d9",
+    "storage_bucket": "friendships-797d9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:145856772998:android:fdad0b05341b905fa28a07",
+        "android_client_info": {
+          "package_name": "com.example.friendships"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_xSVcfom8enV17qIdiyaieJ6OVAyD4tE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
